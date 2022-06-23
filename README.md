@@ -67,7 +67,6 @@ Non dimenticare di fare `php artisan storage:link` per vedere le foto
 
 
 # TODO
-https://laraveldaily.teachable.com/courses/laravel-filament-admin-practical-course/lectures/41046917
-
+https://laraveldaily.teachable.com/courses/laravel-filament-admin-practical-course/lectures/41047226
 
 

@@ -64,9 +64,19 @@ Non dimenticare di fare `php artisan storage:link` per vedere le foto
 - https://laraveldaily.teachable.com/courses/laravel-filament-admin-practical-course/lectures/41046381
 - https://filamentphp.com/docs/2.x/forms/fields#select
 
+# Users
+Faccio un composer update per Filament 2.13
+- https://filamentphp.com/docs/2.x/admin/pages/actions
+- forse c'è un errore nell'USER url link, ma è possibile che sia dovuto al DatabaseSeeder fatto in fretta
+
+# Payments
+Disabilito tutte le Actions, posso solo vedere la lista
+- https://filamentphp.com/docs/2.x/tables/filters#custom-filter-forms
+
+# Global Features of Admin Panel
+TODO
+- https://laraveldaily.teachable.com/courses/laravel-filament-admin-practical-course/lectures/41145931 
 
 
-# TODO
-https://laraveldaily.teachable.com/courses/laravel-filament-admin-practical-course/lectures/41047226
 
 

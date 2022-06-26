@@ -17,8 +17,10 @@ use Illuminate\Support\Str;
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $recordTitleAttribute = 'name'; // posso cercarla nel global search
+    protected static ?string $navigationGroup = 'Shop'; // per creare submenu nella left-bar
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -33,6 +35,7 @@ class ProductResource extends Resource
                 Forms\Components\TextInput::make('slug')->required(),
                 Forms\Components\TextInput::make('price')->required()->rule('numeric'),
                 Forms\Components\FileUpload::make('image'),
+//                Forms\Components\MultiSelect::make('tags')->relationship('tags','name'), // è più completo il RelationManagers
                 //
             ]);
     }
@@ -61,7 +64,7 @@ class ProductResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\TagsRelationManager::class, // scrivo qui la relation ManyToMany
         ];
     }
 
@@ -72,5 +75,10 @@ class ProductResource extends Resource
             'create' => Pages\CreateProduct::route('/create'),
             'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
+    }
+
+    protected static function getNavigationBadge(): ?string
+    {
+        return self::getModel()::count();
     }
 }

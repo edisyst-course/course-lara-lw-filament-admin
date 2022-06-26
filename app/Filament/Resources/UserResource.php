@@ -21,8 +21,10 @@ use Illuminate\Validation\Rules\Password;
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $recordTitleAttribute = 'name'; // posso cercarla nel global search
+    protected static ?string $navigationGroup = 'Shop'; // per creare submenu nella left-bar
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -106,5 +108,11 @@ class UserResource extends Resource
     public static function canCreate(): bool
     {
         return false;
+    }
+
+    // Lo aggiungo (in realtà lo stò sovrascrivendo) solo se i campi "cercabili" sono più di uno
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'email'];
     }
 }

@@ -16,8 +16,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class PaymentResource extends Resource
 {
     protected static ?string $model = Payment::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-currency-euro';
+    protected static ?string $navigationGroup = 'Shop'; // per creare submenu nella left-bar
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {

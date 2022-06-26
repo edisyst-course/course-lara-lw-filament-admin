@@ -16,8 +16,10 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class VoucherResource extends Resource
 {
     protected static ?string $model = Voucher::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-qrcode';
+    protected static ?string $recordTitleAttribute = 'code'; // posso cercarla nel global search
+    protected static ?string $navigationGroup = 'Shop'; // per creare submenu nella left-bar
+    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {
@@ -65,19 +67,14 @@ class VoucherResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListVouchers::route('/'),
-            'create' => Pages\CreateVoucher::route('/create'),
-            'edit' => Pages\EditVoucher::route('/{record}/edit'),
+//            'index' => Pages\ListVouchers::route('/'),
+            'index' => Pages\ManageVouchers::route('/'),
+//            'create' => Pages\CreateVoucher::route('/create'),
+//            'edit' => Pages\EditVoucher::route('/{record}/edit'),
         ];
     }
 }

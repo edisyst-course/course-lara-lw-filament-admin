@@ -125,6 +125,7 @@ php artisan shield:install
 
 # TODO
 - https://laraveldaily.teachable.com/courses/laravel-filament-admin-practical-course/lectures/41167015
+- giocare un po' con i formati vari di visualizzazione per i vari Filament/Resource che ho
 
 
 

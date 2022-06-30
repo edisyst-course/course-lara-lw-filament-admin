@@ -121,6 +121,7 @@ php artisan shield:install
 - php artisan make:filament-resource Customer --simple
 - secondo
 - https://filamentphp.com/docs/2.x/admin/appearance
+- https://filamentphp.com/docs/2.x/forms/layout
 
 # TODO
 - https://laraveldaily.teachable.com/courses/laravel-filament-admin-practical-course/lectures/41167015

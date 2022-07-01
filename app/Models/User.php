@@ -46,6 +46,7 @@ class User extends Authenticatable implements FilamentUser
 
     // Restringo gli user che possono effettivamente loggarsi su /admin/login
     // Di default su Filament tutti gli user possono loggarsi come admin
+    // Con Filament-shield probabilmente questa cosa non mi servirà più
     public function canAccessFilament(): bool
     {
         return str_ends_with($this->email, '@admin.com');

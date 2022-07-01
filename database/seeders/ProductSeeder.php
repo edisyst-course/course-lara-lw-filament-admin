@@ -15,8 +15,13 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        Product::create(['name' => 'Product 1', 'slug' => 'product-1', 'price' => 2999]);
-        Product::create(['name' => 'Product 2', 'slug' => 'product-2', 'price' => 3999]);
-        Product::create(['name' => 'Product 3', 'slug' => 'product-3', 'price' => 4999]);
+        Product::create(['name' => 'Prodotto 1', 'slug' => 'prodotto-1', 'price' => 2999]);
+        Product::create(['name' => 'Prodotto 2', 'slug' => 'prodotto-2', 'price' => 3999]);
+        Product::create(['name' => 'Prodotto 3', 'slug' => 'prodotto-3', 'price' => 4999]);
+        Product::create(['name' => 'Iphone 11',  'slug' => 'iphone-11',  'price' => 999 ]);
+        Product::create(['name' => 'Iphone 12',  'slug' => 'iphone-12',  'price' => 1199]);
+        Product::create(['name' => 'Iphone 13',  'slug' => 'iphone-13',  'price' => 1999]);
+        Product::create(['name' => 'Galaxy S21', 'slug' => 'galaxy-s21', 'price' => 999 ]);
+        Product::create(['name' => 'Galaxy S22', 'slug' => 'galaxy-s22', 'price' => 1999]);
     }
 }

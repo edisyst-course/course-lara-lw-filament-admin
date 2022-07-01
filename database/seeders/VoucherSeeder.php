@@ -15,8 +15,10 @@ class VoucherSeeder extends Seeder
      */
     public function run()
     {
-        Voucher::create(['code' => 'CODE1', 'discount_percent' => 10]);
-        Voucher::create(['code' => 'CODE2', 'discount_percent' => 20]);
-        Voucher::create(['code' => 'CODE3', 'discount_percent' => 30, 'product_id' => 1]);
+        Voucher::create(['code' => 'CODE10', 'discount_percent' => 10]);
+        Voucher::create(['code' => 'CODE20', 'discount_percent' => 20]);
+        Voucher::create(['code' => 'CODE30-1', 'discount_percent' => 30, 'product_id' => 1]);
+        Voucher::create(['code' => 'CODE30-2', 'discount_percent' => 30, 'product_id' => 2]);
+        Voucher::create(['code' => 'CODE30-3', 'discount_percent' => 30, 'product_id' => 3]);
     }
 }

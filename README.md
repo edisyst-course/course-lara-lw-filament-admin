@@ -97,10 +97,11 @@ Disabilito tutte le Actions, posso solo vedere la lista
 
 # BelongsToMany Relations
 - https://filamentphp.com/docs/2.x/admin/resources/relation-managers
-`php artisan make:filament-relation-manager ProductResource tags name`
+- `php artisan make:filament-relation-manager ProductResource tags name`
 - https://filamentphp.com/docs/2.x/admin/resources/relation-managers#attaching-and-detaching-records
 
 # Roles and Permissions
+E' solo una prova: quando installerò Filament-shield tutti i file delle policy verranno sovrascritti
 ```injectablephp
 php artisan make:policy UserPolicy --model=User
 php artisan make:policy ProductPolicy --model=Product
@@ -124,9 +125,18 @@ php artisan shield:install
 - https://filamentphp.com/docs/2.x/forms/layout
 
 # TODO
-- https://laraveldaily.teachable.com/courses/laravel-filament-admin-practical-course/lectures/41167015
+- penso di dover correggere il PaymentSeeder per le relationship con utenti e prodotti
 - giocare un po' con i formati vari di visualizzazione per i vari Filament/Resource che ho
+  - ho fatto tutti gli esempi su ProductResource, dovrei creare delle nuove Resource per far bene le altre prove oppure ampliare i form di create/edit
+- per Filament-shield posso creare le traduzioni in ITA
+- dovrei nell'edit USER mettere un qualcosa per settare i ruoli (dopo che creo i ruoli ovviamente)
 
-
-
-
+# Install repository - lo devo testare ancora
+```injectablephp
+composer install
+cp .env-example .env
+php artisan key:generate
+php artisan migrate:fresh --seed
+php artisan shield:install --fresh
+(selezionare user 1 come superadmin)
+```

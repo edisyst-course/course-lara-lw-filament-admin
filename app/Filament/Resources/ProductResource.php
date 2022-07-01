@@ -26,17 +26,39 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->reactive()
-                    ->afterStateUpdated(function (\Closure $set, $state) {
-                        $set('slug', Str::slug($state));
-                    }),
-                Forms\Components\TextInput::make('slug')->required(),
-                Forms\Components\TextInput::make('price')->required()->rule('numeric'),
-                Forms\Components\FileUpload::make('image'),
-//                Forms\Components\MultiSelect::make('tags')->relationship('tags','name'), // è più completo il RelationManagers
-                //
+                Forms\Components\Card::make()->schema([
+                    Forms\Components\Fieldset::make('Fieldset Campo slug')->schema([
+                        Forms\Components\Section::make('Section Campo price')
+                            ->description('Descrizione Campo price')->schema([
+
+                                Forms\Components\Tabs::make('Due tabs')->tabs([
+                                    Forms\Components\Tabs\Tab::make('primi campi')->schema([
+                                        Forms\Components\TextInput::make('name')
+                                            ->required()
+                                            ->reactive()
+                                            ->afterStateUpdated(function (\Closure $set, $state) {
+                                                $set('slug', Str::slug($state));
+                                            }),
+                                        ]),
+                                    Forms\Components\Tabs\Tab::make('secondi campi')->schema([
+                                            Forms\Components\TextInput::make('slug')->required(),
+                                        ]),
+                                    ]),
+
+                                Forms\Components\Wizard::make()->schema([
+                                    Forms\Components\Wizard\Step::make('primi campi')->schema([
+                                        Forms\Components\TextInput::make('price')->required()->rule('numeric'),
+                                        ]),
+                                    Forms\Components\Wizard\Step::make('secondi campi')->schema([
+                                        Forms\Components\FileUpload::make('image'),
+//                                         Forms\Components\MultiSelect::make('tags')->relationship('tags','name'), // è più completo il RelationManagers
+                                        ]),
+                                    ]),
+
+                        ]),
+                    ]),
+                ]),
+
             ]);
     }
 

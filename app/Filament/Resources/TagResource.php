@@ -34,27 +34,22 @@ class TagResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
             ])
+            ->filters([
+                //
+            ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+//                 Tables\Actions\DeleteAction::make(), // dovrei gestire la foreignId per poter ELIMINARE
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTags::route('/'),
-            'create' => Pages\CreateTag::route('/create'),
-            'edit' => Pages\EditTag::route('/{record}/edit'),
+            'index' => Pages\ManageTags::route('/'),
         ];
     }
 }

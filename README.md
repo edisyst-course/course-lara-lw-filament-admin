@@ -139,3 +139,8 @@ php artisan migrate:fresh --seed
 php artisan shield:install --fresh
 (selezionare user 1 come superadmin)
 ```
+
+
+# Checkout di un tag
+Non posso fare il checkout di un tag, devo creare un branch locale uguale al tag
+Sul mio locale faccio git checkout -b mio_branch_locale v0.1.0

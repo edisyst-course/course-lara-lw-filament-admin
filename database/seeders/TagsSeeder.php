@@ -12,8 +12,7 @@ class TagsSeeder extends Seeder
         Tag::create(['name' => 'Best buy']);
         Tag::create(['name' => 'Bestseller']);
         Tag::create(['name' => 'Nuova offerta']);
-        Tag::create(['name' => 'Offerta in scadenza']);
-        Tag::create(['name' => 'Out of stock']);
-        Tag::create(['name' => 'Prodotto in esaurimento scorte']);
+        Tag::create(['name' => 'In scadenza']);
+        Tag::create(['name' => 'Esaurito']);
     }
 }

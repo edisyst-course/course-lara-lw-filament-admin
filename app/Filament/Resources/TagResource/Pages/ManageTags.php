@@ -4,9 +4,9 @@ namespace App\Filament\Resources\TagResource\Pages;
 
 use App\Filament\Resources\TagResource;
 use Filament\Pages\Actions;
-use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\ManageRecords;
 
-class ListTags extends ListRecords
+class ManageTags extends ManageRecords
 {
     protected static string $resource = TagResource::class;
 

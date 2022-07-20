@@ -12,6 +12,8 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
+use Closure;
 
 class PageResource extends Resource
 {
@@ -23,7 +25,23 @@ class PageResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\Select::make('product_id')
+                            ->relationship('product', 'name'),
+
+                        Forms\Components\TextInput::make('title')
+                            ->reactive()
+                            ->afterStateUpdated(function (Closure $set, $state) {
+                                $set('slug', Str::slug($state));
+                            })
+                            ->required(),
+                        Forms\Components\TextInput::make('slug')
+                            ->required(),
+
+                        Forms\Components\RichEditor::make('content'),
+                        Forms\Components\Toggle::make('is_published')
+                    ])
             ]);
     }
 
@@ -31,7 +49,10 @@ class PageResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('id')->sortable(),
+                Tables\Columns\TextColumn::make('title')->sortable(),
+                Tables\Columns\TextColumn::make('slug')->sortable()->searchable(),
+                Tables\Columns\BooleanColumn::make('is_published'),
             ])
             ->filters([
                 //
@@ -43,14 +64,14 @@ class PageResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -58,5 +79,5 @@ class PageResource extends Resource
             'create' => Pages\CreatePage::route('/create'),
             'edit' => Pages\EditPage::route('/{record}/edit'),
         ];
-    }    
+    }
 }

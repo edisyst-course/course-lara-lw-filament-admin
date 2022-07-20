@@ -9,7 +9,13 @@ class Page extends Model
 {
     use HasFactory;
 
-    public function product(): belongsTo
+    protected $fillable = ['product_id', 'title', 'slug', 'content', 'is_published'];
+
+    protected $casts = [
+        'is_published' => 'boolean',
+    ];
+
+    public function product()
     {
         return $this->belongsTo(Product::class);
     }

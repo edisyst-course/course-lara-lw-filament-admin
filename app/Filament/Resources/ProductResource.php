@@ -33,6 +33,12 @@ class ProductResource extends Resource
 
                                 Forms\Components\Tabs::make('Due tabs')->tabs([
                                     Forms\Components\Tabs\Tab::make('primi campi')->schema([
+
+
+                                    Forms\Components\Select::make('category_id')
+                                        ->relationship('category', 'name'),
+
+
                                         Forms\Components\TextInput::make('name')
                                             ->required()
                                             ->reactive()
@@ -69,6 +75,7 @@ class ProductResource extends Resource
                 Tables\Columns\ImageColumn::make('image')->width(50)->height(50),
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('price')->sortable()->money('eur'),
+                Tables\Columns\TextColumn::make('category.name')->sortable()->searchable(),
                 //
             ])
             ->defaultSort('price', 'desc')

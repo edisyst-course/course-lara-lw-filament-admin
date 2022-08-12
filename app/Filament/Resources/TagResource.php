@@ -12,6 +12,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class TagResource extends Resource
 {
@@ -24,7 +25,12 @@ class TagResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name'),
+                Forms\Components\TextInput::make('name')->required()
+                    ->reactive()
+                    ->afterStateUpdated(function (\Closure $set, $state) {
+                        $set('slug', Str::slug($state));
+                    })->required(),
+                Forms\Components\TextInput::make('slug')->required()->unique(),
             ]);
     }
 

@@ -128,7 +128,13 @@ php artisan shield:install
 - giocare un po' con i formati vari di visualizzazione per i vari Filament/Resource che ho
   - ho fatto tutti gli esempi su ProductResource, dovrei creare delle nuove Resource per far bene le altre prove oppure ampliare i form di create/edit
 - per Filament-shield posso creare le traduzioni in ITA
+- creare un po' di ruoli e poi fare iseed per avere le tabelle già pronte  
 - dovrei nell'edit USER mettere un qualcosa per settare i ruoli (dopo che creo i ruoli ovviamente)
+- **composer require filament/spatie-laravel-media-library-plugin:"^2.0"**
+    - per provare a mettere le immagini di Spatie: lo uso su PageResource
+        - non serve nemmeno che crei il campo a DB, e si può creare una collection_name
+    - servirebbe su Products la collection delle thuumbnail, mentre su Page magari me ne basta giusto una
+        - in realtà da Page la potrei ancdhe togliere, l'ho messa solo per fare un esempio e vedere se e come funzionava
 
 # Install repository - lo devo testare ancora
 ```injectablephp
@@ -144,3 +150,4 @@ php artisan shield:install --fresh
 # Checkout di un tag
 Non posso fare il checkout di un tag, devo creare un branch locale uguale al tag
 Sul mio locale faccio git checkout -b mio_branch_locale v0.1.0
+

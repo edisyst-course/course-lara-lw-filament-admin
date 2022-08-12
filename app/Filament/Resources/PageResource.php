@@ -28,7 +28,8 @@ class PageResource extends Resource
                 Forms\Components\Card::make()
                     ->schema([
                         Forms\Components\Select::make('product_id')
-                            ->relationship('product', 'name'),
+                            ->relationship('product', 'name')
+                            ->required(),
 
                         Forms\Components\TextInput::make('title')
                             ->reactive()
@@ -40,7 +41,8 @@ class PageResource extends Resource
                             ->required(),
 
                         Forms\Components\RichEditor::make('content'),
-                        Forms\Components\Toggle::make('is_published')
+                        Forms\Components\Toggle::make('is_published'),
+                        Forms\Components\SpatieMediaLibraryFileUpload::make('thumbnail')->collection('pages'),
                     ])
             ]);
     }
@@ -49,10 +51,14 @@ class PageResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('product.name')
+                    ->url( fn(Page $record) => ProductResource::getUrl('edit', ['record' => $record->product]))
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('id')->sortable(),
                 Tables\Columns\TextColumn::make('title')->sortable(),
-                Tables\Columns\TextColumn::make('slug')->sortable()->searchable(),
+//                 Tables\Columns\TextColumn::make('slug')->sortable()->searchable(),
                 Tables\Columns\BooleanColumn::make('is_published'),
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('thumbnail')->collection('pages'),
             ])
             ->filters([
                 //

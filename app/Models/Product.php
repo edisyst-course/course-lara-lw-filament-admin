@@ -11,7 +11,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'price', 'is_active', 'image'];
+    protected $fillable = ['name', 'slug', 'category_id', 'price', 'is_active', 'image'];
 
     public function tags(): belongsToMany
     {
